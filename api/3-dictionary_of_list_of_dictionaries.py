@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""frite a Python script that, using this REST API, for a given employee ID,
-returns information about his/her TODO list progress."""
+"""Script to generete request using a given APIs"""
 import json
 import requests
 from sys import argv
 
 
 if __name__ == '__main__':
+    """Script for task0"""
     user_request = requests.get(
         'http://jsonplaceholder.typicode.com/users/').json()
     todos_req = requests.get(
