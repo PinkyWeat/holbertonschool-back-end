@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 <<<<<<< HEAD
+<<<<<<< HEAD
 """
 frite a Python script that, using this REST API, for a given employee ID,
 returns information about his/her TODO list progress.
@@ -8,12 +9,16 @@ returns information about his/her TODO list progress.
 """frite a Python script that, using this REST API, for a given employee ID,
 returns information about his/her TODO list progress."""
 >>>>>>> 3df843b6449bea8213f1783333273e8c3c04308b
+=======
+"""Script to generete request using a given APIs"""
+>>>>>>> 6d9c37b015df7a574f112f0a4c92dc984ba82847
 import json
 import requests
 from sys import argv
 
 
 if __name__ == '__main__':
+    """Script for task0"""
     user_request = requests.get(
         'http://jsonplaceholder.typicode.com/users/').json()
     todos_req = requests.get(
