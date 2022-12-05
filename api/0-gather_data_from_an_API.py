@@ -1,34 +1,33 @@
 #!/usr/bin/python3
 """API Module"""
 import requests
-import sys
+from sys import argv
 
 if __name__ == '__main__':
-    user_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/todos"
-    get_name = "https://jsonplaceholder.typicode.com/users"
-    response = requests.get(
-        url,
-        params={'userId': int(user_id)})
-    user_response = requests.get(
-        get_name,
-        params={'id': int(user_id)})
-    count = 0
-    total_tasks = 0
-    tasks_text = []
+    try:
+        id = int(argv[1])
+    except ValueError:
+        exit()
 
-    for key in response.json():
-        if key['completed'] is True:
-            count += 1
-            tasks_text.append(key['title'])
-        total_tasks += 1
-    employee_name = ''
-    for name in user_response.json():
-        if 'name' in name.keys():
-            employee_name = name['name']
+    user = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
+    todo = "{}/todos".format(user)
 
-    print("Employee {} is done with tasks({}/{}):".format(employee_name,
-                                                          count,
-                                                          total_tasks))
-    for task in tasks_text:
-        print("\t {}".format(task))
+    res = requests.get(user).json()
+    name = res.get("name")
+    res = requests.get(todo).json()
+    total = len(res)
+    hechont = 0
+
+    for PEPE in res:
+        if PEPE.get("completed") is False:
+            hechont = hechont + 1
+        else:
+            pass
+
+    hecho = total - hechont
+
+    print("Employee {} is done with tasks({}/{}):".format(name, hecho, total))
+
+    for elem in res:
+        if elem.get("completed") is True:
+            print("\t", elem.get("title"))
