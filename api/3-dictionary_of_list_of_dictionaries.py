@@ -1,24 +1,11 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-<<<<<<< HEAD
-"""
-frite a Python script that, using this REST API, for a given employee ID,
-returns information about his/her TODO list progress.
-"""
-=======
-"""frite a Python script that, using this REST API, for a given employee ID,
-returns information about his/her TODO list progress."""
->>>>>>> 3df843b6449bea8213f1783333273e8c3c04308b
-=======
-"""Script to generete request using a given APIs"""
->>>>>>> 6d9c37b015df7a574f112f0a4c92dc984ba82847
+"""Python script to export data in the JSON format"""
 import json
 import requests
 from sys import argv
 
 
 if __name__ == '__main__':
-    """Script for task0"""
     user_request = requests.get(
         'http://jsonplaceholder.typicode.com/users/').json()
     todos_req = requests.get(
@@ -36,19 +23,5 @@ if __name__ == '__main__':
                 aux['username'] = name
                 dic[uid].append(aux)
 
-<<<<<<< HEAD
-    key = "{}".format(sys.argv[1])
-    container = {}
-    container[key] = []
-    for task in response:
-        to_dump = {}
-        to_dump['task'] = task.get('title')
-        to_dump['username'] = user_response['username']
-        to_dump['completed'] = task.get('completed')
-        container[key].append(to_dump)
-        with open("todo_all_employees.json", 'w+') as f:
-            json.dump(container, f)
-=======
     with open("todo_all_employees.json", "w", encoding='utf-8') as f:
         json.dump(dic, f)
->>>>>>> 3df843b6449bea8213f1783333273e8c3c04308b
